@@ -1,5 +1,6 @@
 package hw2.ex1;
 
+import hw2.AbstractHW2Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -13,31 +14,26 @@ import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
-public class ex1Test{
-
-    static String username = "Roman";
-    static String password = "Jdi1234";
+public class ex1Test extends AbstractHW2Test {
 
     @Test
     void ex1Test() throws InterruptedException {
 
-        SoftAssert testAssert= new SoftAssert();
+
 // 1: Open test site by URL
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
         driver.get("https://jdi-testing.github.io/jdi-light/index.html");
-        WebDriverWait wait = new WebDriverWait(driver, 10);
 // 2: Assert Browser title
         testAssert.assertEquals(driver.getTitle(), "Home Page");
 // 3: Perform login
-        driver.findElement(By.cssSelector("li[class='dropdown uui-profile-menu']")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user-icon")));
+        driver.findElement(By.id("user-icon")).click();
         driver.findElement(By.id("name")).sendKeys(username);
         driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("login-button")).click();
 // 4: Assert Username is loggined
         testAssert.assertEquals(driver.findElement(By.id("user-name")).getText(), "ROMAN IOVLEV");
 // 5: Assert that there are 4 items on the header section are displayed and they have proper texts
-        List<WebElement> menuItems = driver.findElements(By.xpath("//nav/ul[1]/li/a"));
+        List<WebElement> menuItems = driver.findElements(By.cssSelector("ul.uui-navigation.nav>li>a"));
         String[] expectedItems = {"HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS" };
         testAssert.assertEquals(menuItems.size(), expectedItems.length);
         for(int i = 0; i < expectedItems.length; i++){
@@ -46,10 +42,9 @@ public class ex1Test{
 // 6: Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> benefits = driver.findElements(By.className("benefit"));
         testAssert.assertEquals(benefits.size(), 4);
-
         for(WebElement benefit : benefits)
         {
-            testAssert.assertTrue(benefit.findElement(By.xpath("div/span")).isDisplayed());
+            testAssert.assertTrue(benefit.findElement(By.cssSelector("div>span")).isDisplayed());
         }
 // 7: Assert that there are 4 texts on the Index Page under icons and they have proper text
         String[] benefitsText = {"To include good practices\n" +
@@ -70,7 +65,7 @@ public class ex1Test{
 // 10: Switch to original window back
         driver.switchTo().defaultContent();
 // 11: Assert that there are 5 items in the Left Section are displayed and they have proper text
-        List<WebElement> sideMenuItems = driver.findElements(By.xpath("//ul[@class='sidebar-menu']/li"));
+        List<WebElement> sideMenuItems = driver.findElements(By.cssSelector("ul.sidebar-menu>li"));
         String[] expSideItems = {"Home", "Contact form", "Service", "Metals & Colors", "Elements packs"};
         testAssert.assertEquals(menuItems.size(), expectedItems.length);
         for(int i = 0; i < expectedItems.length; i++){

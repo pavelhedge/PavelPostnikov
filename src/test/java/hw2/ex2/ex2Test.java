@@ -1,9 +1,11 @@
 package hw2.ex2;
 
+import hw2.AbstractHW2Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.annotations.Test;
@@ -13,24 +15,18 @@ import java.util.List;
 
 import static org.testng.Assert.assertEquals;
 
-public class ex2Test {
-
-    static String username = "Roman";
-    static String password = "Jdi1234";
+public class ex2Test extends AbstractHW2Test {
 
     @Test
     void ex2Test() throws InterruptedException {
 
-        SoftAssert testAssert= new SoftAssert();
 // 1: Open test site by URL
-        WebDriver driver = new ChromeDriver();
-        driver.manage().window().maximize();
         driver.get("https://jdi-testing.github.io/jdi-light/index.html");
-        WebDriverWait wait = new WebDriverWait(driver, 10);
 // 2: Assert Browser title
         testAssert.assertEquals(driver.getTitle(), "Home Page");
 // 3: Perform login
-        driver.findElement(By.cssSelector("li[class='dropdown uui-profile-menu']")).click();
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.id("user-icon")));
+        driver.findElement(By.id("user-icon")).click();
         driver.findElement(By.id("name")).sendKeys(username);
         driver.findElement(By.id("password")).sendKeys(password);
         driver.findElement(By.id("login-button")).click();
@@ -42,6 +38,7 @@ public class ex2Test {
 
         testAssert.assertEquals(driver.getTitle(), "Different Elements");
 // 6: Select checkboxes Water, Wind
+        wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("input[type=checkbox]")));
         List<WebElement> checkboxes = driver.findElements(By.cssSelector("input[type=checkbox]"));
         checkboxes.get(0).click();
         checkboxes.get(2).click();
@@ -57,7 +54,7 @@ public class ex2Test {
         testAssert.assertEquals(dropdown.getFirstSelectedOption().getText(), "Yellow");
 //  9: Assert that log has corresponding records
         String[] keywords = {"Yellow", "Selen", "Wind", "Water"};
-        List<WebElement> logs = driver.findElements(By.xpath("//section[div[contains(text(), 'Log')]]/div/div/ul/li"));
+            List<WebElement> logs = driver.findElements(By.cssSelector("ul.panel-body-list.logs>li"));
         for (int i = 0; i < logs.size(); i++) {
             testAssert.assertTrue(logs.get(i).getText().contains(keywords[i]));
         }
