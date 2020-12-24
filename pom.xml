@@ -43,6 +43,16 @@
                 <suite.file>${project.basedir}/src/test/resources/hw1/AllTestsSuite.xml</suite.file>
             </properties>
         </profile>
+
+        <profile>
+            <id>Homework_2</id>
+            <activation>
+                <activeByDefault>false</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>${project.basedir}/src/test/resources/hw2/hw2Suite.xml</suite.file>
+            </properties>
+        </profile>
     </profiles>
 
     <dependencies>
@@ -59,6 +69,19 @@
             <version>1.0</version>
             <scope>system</scope>
             <systemPath>${pom.basedir}/src/main/resources/calculator-1.0.jar</systemPath>
+        </dependency>
+
+        <dependency>
+            <groupId>org.seleniumhq.selenium</groupId>
+            <artifactId>selenium-java</artifactId>
+            <version>3.141.59</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.github.bonigarcia</groupId>
+            <artifactId>webdrivermanager</artifactId>
+            <version>4.2.2</version>
+            <scope>test</scope>
         </dependency>
     </dependencies>
 
