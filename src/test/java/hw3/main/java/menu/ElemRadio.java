@@ -3,25 +3,15 @@ package hw3.main.java.menu;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
-
-public class ElemRadio {
+public class ElemRadio extends AbstractMenu {
 
     @FindBy(xpath = "//input[@type='radio']//parent::label")
-    private List<WebElement> radioItems;
+    private List<WebElement> initItems;
 
     public ElemRadio(WebDriver driver){
-        PageFactory.initElements(driver, this);
-    }
-
-    public void selectMenuItem(String menuItem){
-        for(WebElement item : radioItems){
-            if(item.getText().equals(menuItem)){
-                item.click();
-                break;
-            }
-        }
+        super(driver);
+        this.items = initItems;
     }
 }

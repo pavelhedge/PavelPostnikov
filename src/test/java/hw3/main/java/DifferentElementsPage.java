@@ -1,18 +1,14 @@
 package hw3.main.java;
 
-import hw3.main.java.menu.ElemCheckboxes;
-import hw3.main.java.menu.ElemDropdown;
-import hw3.main.java.menu.ElemRadio;
-import hw3.main.java.menu.LogItem;
+import hw3.main.java.menu.*;
 import org.openqa.selenium.WebDriver;
-
 
 public class DifferentElementsPage extends AbstractPage{
 
-    public ElemCheckboxes checkboxes;
-    public ElemRadio radio;
-    public ElemDropdown dropdown;
-    public LogItem log;
+    public Selectable checkboxes;
+    public Selectable radio;
+    public Selectable dropdown;
+    public Selectable log;
 
     public DifferentElementsPage(WebDriver driver){
         super(driver);

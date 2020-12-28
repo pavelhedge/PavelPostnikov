@@ -7,7 +7,6 @@ import org.openqa.selenium.support.PageFactory;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class HomePage extends AbstractPage{
 
     @FindBy(css = ".benefit>div>span")
@@ -29,7 +28,7 @@ public class HomePage extends AbstractPage{
     }
 
     public List<String> getBenefitTexts(){
-        List<String> result = new ArrayList(headerMenu.getMenuItemsText().size());
+        List<String> result = new ArrayList<>(headerMenu.getItemsText().size());
         for (WebElement menuItem: benefitTexts) {
             result.add(menuItem.getText());
         }

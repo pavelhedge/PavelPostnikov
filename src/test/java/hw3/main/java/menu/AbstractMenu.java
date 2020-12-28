@@ -1,30 +1,32 @@
 package hw3.main.java.menu;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.PageFactory;
+
 import java.util.ArrayList;
 import java.util.List;
 
+public abstract class AbstractMenu implements Selectable{
 
-public abstract class AbstractMenu {
+    List<WebElement> items;
 
-    private List<WebElement> menuItems;
-
-    public AbstractMenu(List<WebElement> menuItems){
-        this.menuItems = menuItems;
+    public AbstractMenu(WebDriver driver){
+        PageFactory.initElements(driver, this);
     }
 
-    public void clickMenuItem(String menuItem){
-        for(WebElement item : menuItems){
-            if(item.getText().equals(menuItem)){
+    public void select(String itemName){
+        for(WebElement item : items){
+            if(item.getText().equals(itemName)){
                 item.click();
                 break;
             }
         }
     }
 
-    public List<String> getMenuItemsText() {
-        List<String> result = new ArrayList(menuItems.size());
-        for (WebElement menuItem : menuItems) {
+    public List<String> getItemsText() {
+        List<String> result = new ArrayList<>(items.size());
+        for (WebElement menuItem : items) {
             result.add(menuItem.getText());
         }
         return result;

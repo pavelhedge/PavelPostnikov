@@ -6,22 +6,13 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
-
-public class ElemCheckboxes {
+public class ElemCheckboxes extends AbstractMenu{
 
     @FindBy(xpath = "//input[@type='checkbox']//parent::label")
-    private List<WebElement> checkboxItems;
+    private List<WebElement> initItems;
 
     public ElemCheckboxes(WebDriver driver){
-        PageFactory.initElements(driver, this);
-    }
-
-    public void selectMenuItem(String menuItem){
-        for(WebElement item : checkboxItems){
-            if(item.getText().equals(menuItem)){
-                item.click();
-                break;
-            }
-        }
+        super(driver);
+        this.items = initItems;
     }
 }

@@ -6,8 +6,10 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import java.util.ArrayList;
+import java.util.List;
 
-public class ElemDropdown {
+public class ElemDropdown implements Selectable{
 
     @FindBy(css = "select.uui-form-element")
     private WebElement dropdownWE;
@@ -18,7 +20,16 @@ public class ElemDropdown {
         dropdown = new Select(dropdownWE);
     }
 
-    public void selectMenuItem(String menuItem){
-        dropdown.selectByVisibleText(menuItem);
+    public void select(String itemName){
+        dropdown.selectByVisibleText(itemName);
+    }
+
+    public List<String> getItemsText(){
+        List<WebElement> items = dropdown.getOptions();
+        List<String> itemsText = new ArrayList<>(items.size());
+        for (WebElement item : items){
+            itemsText.add(item.getText());
+        }
+        return itemsText;
     }
 }

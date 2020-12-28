@@ -6,7 +6,6 @@ import org.testng.annotations.Test;
 import java.util.Arrays;
 import java.util.List;
 
-
 public class ex1Test extends BaseTest{
 
     @Test
@@ -25,7 +24,7 @@ public class ex1Test extends BaseTest{
         testAssert.assertEquals(hp.getUserName(), "ROMAN IOVLEV");
         // 5: Assert that there are 4 items on the header section are displayed and they have proper texts
         List<String> expectedHeaderItems = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
-        List<String> headerItems = hp.headerMenu.getMenuItemsText();
+        List<String> headerItems = hp.headerMenu.getItemsText();
         testAssert.assertEquals(headerItems, expectedHeaderItems);
 
         // 6: Assert that there are 4 images on the Index Page and they are displayed
@@ -40,7 +39,7 @@ public class ex1Test extends BaseTest{
                 "To be multiplatform",
                 "Already have good base\n(about 20 internal and\n" +
                         "some external projects),\nwish to get more…");
-        hp.getBenefitTexts().equals(expectedText);
+        testAssert.assertEquals(hp.getBenefitTexts(), expectedText);
 
         // 8: Assert that there is the iframe with “Frame Button” exist
         testAssert.assertTrue(hp.frameExists());
@@ -53,7 +52,7 @@ public class ex1Test extends BaseTest{
         hp.switchToDefault();
 
         // 11: Assert that there are 5 items in the Left Section are displayed and they have proper text
-        List<String> sideMenuItems = hp.sideMenu.getMenuItemsText();
+        List<String> sideMenuItems = hp.sideMenu.getItemsText();
         List<String> expectedSideItems = Arrays.asList("Home", "Contact form", "Service", "Metals & Colors", "Elements packs");
         testAssert.assertEquals(sideMenuItems, expectedSideItems);
 

@@ -2,20 +2,20 @@ package hw3.main.java;
 
 import hw3.main.java.menu.HeaderMenu;
 import hw3.main.java.menu.HeaderServiceDropdown;
+import hw3.main.java.menu.Selectable;
 import hw3.main.java.menu.SideMenu;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
-
 public abstract class AbstractPage {
 
     WebDriver driver;
 
-    public HeaderMenu headerMenu;
-    public SideMenu sideMenu;
-    public HeaderServiceDropdown headerServiceDropdown;
+    public Selectable headerMenu;
+    public Selectable sideMenu;
+    public Selectable headerServiceDropdown;
     @FindBy(id = "user-icon")
     WebElement showLoginForm;
     @FindBy(id = "name")
