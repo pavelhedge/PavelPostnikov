@@ -6,6 +6,7 @@ import hw3.main.java.menu.ElemRadio;
 import hw3.main.java.menu.LogItem;
 import org.openqa.selenium.WebDriver;
 
+
 public class DifferentElementsPage extends AbstractPage{
 
     public ElemCheckboxes checkboxes;
@@ -20,5 +21,4 @@ public class DifferentElementsPage extends AbstractPage{
         dropdown = new ElemDropdown(driver);
         log = new LogItem(driver);
     }
-
 }

@@ -3,16 +3,14 @@ package hw3.test.java;
 import hw3.main.java.HomePage;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
-import static org.testng.Assert.assertEquals;
-import static org.testng.Assert.assertTrue;
-
 import java.util.Arrays;
 import java.util.List;
+
 
 public class ex1Test extends BaseTest{
 
     @Test
-    public void ex1Test() {
+    public void ex1TestMethod() {
         //WebDriver driver = new ChromeDriver();
         //1. Open test site by URL
         HomePage hp = new HomePage(driver, properties.get("url"));
@@ -33,7 +31,7 @@ public class ex1Test extends BaseTest{
         // 6: Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> benefitPics = hp.getBenefitPics();
         testAssert.assertEquals(benefitPics.size(), 4);
-        for (WebElement pic : benefitPics) assertTrue(pic.isDisplayed());
+        for (WebElement pic : benefitPics) testAssert.assertTrue(pic.isDisplayed());
 
         // 7: Assert that there are 4 texts on the Index Page under icons and they have proper text
         List<String> expectedText = Arrays.asList("To include good practices\n" +
@@ -61,6 +59,4 @@ public class ex1Test extends BaseTest{
 
         //12. Close browser - @AfterTest in AbstractPage class
     }
-
-
 }

@@ -1,20 +1,16 @@
 package hw3.test.java;
 
-
 import hw3.main.java.DifferentElementsPage;
 import hw3.main.java.HomePage;
 import org.testng.annotations.Test;
-
 import java.util.Arrays;
 import java.util.List;
 
-import static org.testng.Assert.assertEquals;
 
 public class ex2Test extends BaseTest {
 
     @Test
-    void ex2Test() throws InterruptedException {
-
+    void ex2TestMethod() {
 
         //1. Open test site by URL
         if (properties ==null) System.out.println("Props null");
@@ -40,16 +36,17 @@ public class ex2Test extends BaseTest {
         difelp.checkboxes.selectMenuItem("Water");
         difelp.checkboxes.selectMenuItem("Wind");
 
-// 7: Select radio
+        // 7: Select radio
         difelp.radio.selectMenuItem("Selen");
-// 8: Select in dropdown
+
+        // 8: Select in dropdown
         difelp.dropdown.selectMenuItem("Yellow");
-//  9: Assert that log has corresponding records
+
+        //  9: Assert that log has corresponding records
         List<String> keywords = Arrays.asList("Yellow", "Selen", "Wind", "Water");
         List<String> logTexts = difelp.log.getMenuItemsText();
         for (int i = 0; i < logTexts.size(); i++) {
             testAssert.assertTrue(logTexts.get(i).contains(keywords.get(i)));
         }
-// 10: Close Browser
     }
 }
