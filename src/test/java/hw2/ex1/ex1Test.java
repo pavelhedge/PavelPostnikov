@@ -72,6 +72,7 @@ public class ex1Test extends AbstractHW2Test {
             testAssert.assertEquals(menuItems.get(i).getText(), expSideItems[i]);
         }
 // 12: Close Browser
+        testAssert.assertAll();
        driver.quit();
     }
 }

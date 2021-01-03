@@ -21,6 +21,7 @@ public class ex2Test extends AbstractHW2Test {
     void ex2Test() throws InterruptedException {
 
 // 1: Open test site by URL
+        testAssert.assertTrue(false);
         driver.get("https://jdi-testing.github.io/jdi-light/index.html");
 // 2: Assert Browser title
         testAssert.assertEquals(driver.getTitle(), "Home Page");
@@ -48,6 +49,7 @@ public class ex2Test extends AbstractHW2Test {
         WebElement selenRadio = driver.findElements(By.cssSelector("input[type=radio]")).get(3);
         selenRadio.click();
         testAssert.assertTrue(selenRadio.isSelected());
+
 // 8: Select in dropdown
         Select dropdown = new Select(driver.findElement(By.cssSelector(("select.uui-form-element"))));
         dropdown.selectByVisibleText("Yellow");
@@ -58,7 +60,8 @@ public class ex2Test extends AbstractHW2Test {
         for (int i = 0; i < logs.size(); i++) {
             testAssert.assertTrue(logs.get(i).getText().contains(keywords[i]));
         }
+        testAssert.assertAll();
 // 10: Close Browser
-        driver.quit();
+        //driver.quit();
     }
 }
