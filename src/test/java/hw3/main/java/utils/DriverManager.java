@@ -17,7 +17,10 @@ public class DriverManager {
         }
         return driver;
     }
-    public static void closeBrowser(){
-        if (driver != null) driver.quit();
+    public static void closeDriver(){
+        if (driver != null){
+            driver.quit();
+            driver = null;
+        }
     }
 }

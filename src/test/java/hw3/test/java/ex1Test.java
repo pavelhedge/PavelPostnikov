@@ -25,7 +25,8 @@ public class ex1Test extends BaseTest{
         // 5: Assert that there are 4 items on the header section are displayed and they have proper texts
         List<String> expectedHeaderItems = Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS");
         List<String> headerItems = hp.headerMenu.getItemsText();
-        testAssert.assertEquals(headerItems, expectedHeaderItems);
+        testAssert.assertEquals(headerItems, expectedHeaderItems,
+                "#      hw3 ex1 Test: check header menu ");
 
         // 6: Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> benefitPics = hp.getBenefitPics();
@@ -54,7 +55,8 @@ public class ex1Test extends BaseTest{
         // 11: Assert that there are 5 items in the Left Section are displayed and they have proper text
         List<String> sideMenuItems = hp.sideMenu.getItemsText();
         List<String> expectedSideItems = Arrays.asList("Home", "Contact form", "Service", "Metals & Colors", "Elements packs");
-        testAssert.assertEquals(sideMenuItems, expectedSideItems);
+        testAssert.assertEquals(sideMenuItems, expectedSideItems,
+                "#      hw3 ex1 Test: check sidebar menu ");
 
         //12. Close browser - @AfterTest in AbstractPage class
     }

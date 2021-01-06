@@ -28,22 +28,22 @@ public class ex2Test extends BaseTest {
         hp.headerMenu.select("SERVICE");
         hp.headerServiceDropdown.select("DIFFERENT ELEMENTS");
 
-        DifferentElementsPage difelp = new DifferentElementsPage(driver);
-        testAssert.assertEquals(difelp.getTitle(), "Different Elements");
+        DifferentElementsPage elemPage = new DifferentElementsPage(driver);
+        testAssert.assertEquals(elemPage.getTitle(), "Different Elements");
 
         // 6: Select checkboxes Water, Wind
-        difelp.checkboxes.select("Water");
-        difelp.checkboxes.select("Wind");
+        elemPage.checkboxes.select("Water");
+        elemPage.checkboxes.select("Wind");
 
         // 7: Select radio
-        difelp.radio.select("Selen");
+        elemPage.radio.select("Selen");
 
         // 8: Select in dropdown
-        difelp.dropdown.select("Yellow");
+        elemPage.dropdown.select("Yellow");
 
         //  9: Assert that log has corresponding records
         List<String> keywords = Arrays.asList("Yellow", "Selen", "Wind", "Water");
-        List<String> logTexts = difelp.log.getItemsText();
+        List<String> logTexts = elemPage.log.getItemsText();
         for (int i = 0; i < logTexts.size(); i++) {
             testAssert.assertTrue(logTexts.get(i).contains(keywords.get(i)));
         }

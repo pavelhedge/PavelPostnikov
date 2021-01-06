@@ -4,7 +4,10 @@ import hw3.main.java.utils.DriverManager;
 import hw3.main.java.utils.PropertiesManager;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 import org.testng.asserts.SoftAssert;
 
@@ -14,16 +17,18 @@ public class BaseTest {
     SoftAssert testAssert;
     PropertiesManager properties;
 
-    @BeforeTest
+    @BeforeMethod
     public void setUp(){
         WebDriverManager.chromedriver().setup();
         driver = DriverManager.setupDriver();
-        properties = new PropertiesManager();
+        driver.manage().window().maximize();
         testAssert = new SoftAssert();
+        properties = new PropertiesManager();
     }
 
-    @AfterTest
+    @AfterMethod
     public void tearDownDriver() {
-        DriverManager.closeBrowser();
+        testAssert.assertAll();
+        DriverManager.closeDriver();
     }
 }

@@ -17,7 +17,7 @@ import static org.testng.Assert.assertEquals;
 public class ex1Test extends AbstractHW2Test {
 
     @Test
-    void ex1Test() throws InterruptedException {
+    void ex1TestMethod() {
 
 
 // 1: Open test site by URL
@@ -34,10 +34,12 @@ public class ex1Test extends AbstractHW2Test {
         testAssert.assertEquals(driver.findElement(By.id("user-name")).getText(), "ROMAN IOVLEV");
 // 5: Assert that there are 4 items on the header section are displayed and they have proper texts
         List<WebElement> menuItems = driver.findElements(By.cssSelector("ul.uui-navigation.nav>li>a"));
-        String[] expectedItems = {"HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS" };
+        String[] expectedItems = {"HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"};
         testAssert.assertEquals(menuItems.size(), expectedItems.length);
         for(int i = 0; i < expectedItems.length; i++){
-            testAssert.assertEquals(menuItems.get(i).getText(), expectedItems[i]);
+            testAssert.assertEquals(menuItems.get(i).getText(), expectedItems[i],
+                    "#      hw2 ex1 Test:\n" +
+                            "#      check " + expectedItems[i] + " item in header menu ");
         }
 // 6: Assert that there are 4 images on the Index Page and they are displayed
         List<WebElement> benefits = driver.findElements(By.className("benefit"));
@@ -66,10 +68,12 @@ public class ex1Test extends AbstractHW2Test {
         driver.switchTo().defaultContent();
 // 11: Assert that there are 5 items in the Left Section are displayed and they have proper text
         List<WebElement> sideMenuItems = driver.findElements(By.cssSelector("ul.sidebar-menu>li"));
-        String[] expSideItems = {"Home", "Contact form", "Service", "Metals & Colors", "Elements packs"};
+        String[] expSideItems = {"HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS", "Elements packs"};
         testAssert.assertEquals(menuItems.size(), expectedItems.length);
         for(int i = 0; i < expectedItems.length; i++){
-            testAssert.assertEquals(menuItems.get(i).getText(), expSideItems[i]);
+            testAssert.assertEquals(menuItems.get(i).getText(), expSideItems[i],
+                    "#      hw2 ex1 Test:\n" +
+                            "#      check " + expectedItems[i] + " item in sidebar menu ");
         }
 // 12: Close Browser
        driver.quit();

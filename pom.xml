@@ -10,7 +10,7 @@
 
     <properties>
         <testng.version>7.3.0</testng.version>
-
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
     <profiles>
@@ -60,7 +60,7 @@
                 <activeByDefault>false</activeByDefault>
             </activation>
             <properties>
-                <suite.file>${project.basedir}/src/test/resources/hw2/hw2Suite.xml</suite.file>
+                <suite.file>${project.basedir}/src/test/resources/hw3/hw3Suite.xml</suite.file>
             </properties>
         </profile>
     </profiles>
