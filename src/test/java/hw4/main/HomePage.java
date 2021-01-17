@@ -19,13 +19,23 @@ public class HomePage extends AbstractPage {
     @FindBy(id = "frame-button")
     WebElement frameBtn;
 
-    public HomePage(WebDriver driver, String url){
-        super(driver, url);
+    public HomePage(){
+        super( "Home Page", "https://jdi-testing.github.io/jdi-light/index.html");
         PageFactory.initElements(driver, this);
     }
 
-    public List<WebElement> getBenefitPics(){
-        return benefitPics;
+    public void open(){
+        driver.get(url);
+    }
+
+    public int getBenefitPicsAmount(){
+        return benefitPics.size();
+    }
+
+    public boolean checkBenefitPicsDisplayed() {
+        boolean result = true;
+        for (WebElement pic : benefitPics) if (!pic.isDisplayed()) result = false;
+        return result;
     }
 
     public List<String> getBenefitTexts(){
@@ -51,5 +61,7 @@ public class HomePage extends AbstractPage {
     public boolean frameBtnExists(){
         return frameBtn.isDisplayed();
     }
+
+
 
 }

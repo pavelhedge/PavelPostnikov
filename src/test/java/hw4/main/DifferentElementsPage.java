@@ -1,21 +1,37 @@
 package hw4.main;
 
-import hw4.java.menu.*;
-import hw4.main.menu.*;
-import org.openqa.selenium.WebDriver;
+import hw4.main.subElements.*;
+
+import java.util.List;
 
 public class DifferentElementsPage extends AbstractPage {
 
-    public Selectable checkboxes;
-    public Selectable radio;
-    public Selectable dropdown;
-    public Selectable log;
+    private Selectable checkboxes;
+    private Selectable radio;
+    private ElemDropdown dropdown;
+    private LogItem log;
 
-    public DifferentElementsPage(WebDriver driver){
-        super(driver);
-        checkboxes = new ElemCheckboxes(driver);
-        radio = new ElemRadio(driver);
-        dropdown = new ElemDropdown(driver);
-        log = new LogItem(driver);
+    public DifferentElementsPage(){
+        super("Different Elements", "https://jdi-testing.github.io/jdi-light/different-elements.html");
+        checkboxes = new ElemCheckboxes();
+        radio = new ElemRadio();
+        dropdown = new ElemDropdown();
+        log = new LogItem();
+    }
+
+    public void selectCheckbox(String itemName) {
+        checkboxes.select(itemName);
+    }
+
+    public void selectRadio(String itemName) {
+        radio.select("Selen");
+    }
+
+    public void selectDropdown(String itemName) {
+        dropdown.select("Yellow");
+    }
+
+    public List<String> getLog(){
+        return log.getItemsText();
     }
 }

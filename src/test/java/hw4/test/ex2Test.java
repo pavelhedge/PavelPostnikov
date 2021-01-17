@@ -2,6 +2,8 @@ package hw4.test;
 
 import hw4.main.DifferentElementsPage;
 import hw4.main.HomePage;
+import io.qameta.allure.Feature;
+import io.qameta.allure.Story;
 import org.testng.annotations.Test;
 
 import java.util.Arrays;
@@ -10,43 +12,37 @@ import java.util.List;
 public class ex2Test extends AbstractTest {
 
     @Test
+    @Feature("Проверка работы с элементами")
+    @Story("Проверить работу разных элементов и логгирование на Different Elements")
     void ex2TestMethod() {
 
         //1. Open test site by URL
-        if (properties == null) System.out.println("Props null");
-        HomePage hp = new HomePage(driver, properties.get("url"));
+        actionStep.openHomePage();
 
         //2. Assert Browser title
-        testAssert.assertEquals(hp.getTitle(), "Home Page");
+        assertStep.checkTitle("Home Page");
 
         //3. Perform login
-        hp.login(properties.get("username"), properties.get("password"));
+        actionStep.logInToPage(properties.get("username"), properties.get("password"));
 
-        //4. Assert Username is logged in
-        testAssert.assertEquals(hp.getUserName(), "ROMAN IOVLEV");
+        //4. Assert Username is loggined
+        assertStep.checkUserIsLoggedIn("ROMAN IOVLEV");
 
         // 5: Open through the header menu Service -> Different Elements Page
-        hp.headerMenu.select("SERVICE");
-        hp.headerServiceDropdown.select("DIFFERENT ELEMENTS");
-
-        DifferentElementsPage elemPage = new DifferentElementsPage(driver);
-        testAssert.assertEquals(elemPage.getTitle(), "Different Elements");
+        actionStep.selectInHeaderMenu("SERVICE", "DIFFERENT ELEMENTS");
 
         // 6: Select checkboxes Water, Wind
-        elemPage.checkboxes.select("Water");
-        elemPage.checkboxes.select("Wind");
+        actionStep.selectCheckBoxOnDiifferentElements("Water");
+        actionStep.selectCheckBoxOnDiifferentElements("Wind");
 
         // 7: Select radio
-        elemPage.radio.select("Selen");
+        actionStep.selectRadioOnDiifferentElements("Selen");
 
         // 8: Select in dropdown
-        elemPage.dropdown.select("Yellow");
+        actionStep.selectDropDownOnDiifferentElements("Yellow");
 
         //  9: Assert that log has corresponding records
         List<String> keywords = Arrays.asList("Yellow", "Selen", "Wind", "Water");
-        List<String> logTexts = elemPage.log.getItemsText();
-        for (int i = 0; i < logTexts.size(); i++) {
-            testAssert.assertTrue(logTexts.get(i).contains(keywords.get(i)));
-        }
+        assertStep.checkLogRecordsOnDifferentElementsPage(keywords);
     }
 }

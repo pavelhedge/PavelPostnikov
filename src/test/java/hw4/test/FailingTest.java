@@ -3,16 +3,14 @@ package hw4.test;
 import hw4.main.utils.AllureListener;
 import io.qameta.allure.Feature;
 import io.qameta.allure.Story;
-import org.openqa.selenium.WebElement;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
-import javax.swing.*;
 import java.util.Arrays;
 import java.util.List;
 
 @Listeners(AllureListener.class)
-public class ex1Test extends AbstractTest {
+public class FailingTest extends AbstractTest {
 
     @Feature("Проверка элементов домашней страницы")
     @Story("Проверить меню заголовка, боковое меню и бенефиты на странице")
@@ -28,7 +26,7 @@ public class ex1Test extends AbstractTest {
         actionStep.logInToPage(properties.get("username"), properties.get("password"));
 
         //4. Assert Username is loggined
-        assertStep.checkUserIsLoggedIn("ROMAN IOVLEV");
+        assertStep.checkUserIsLoggedIn("ROMAN");
 
         // 5: Assert that there are 4 items on the header section are displayed and they have proper texts
         assertStep.checkHeaderItems(Arrays.asList("HOME", "CONTACT FORM", "SERVICE", "METALS & COLORS"));

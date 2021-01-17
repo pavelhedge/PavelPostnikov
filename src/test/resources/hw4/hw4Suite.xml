@@ -2,12 +2,19 @@
 <suite name="Homework_4 Tests">
     <test name="Exercise_1">
         <classes>
-            <class name="hw4.test.java.ex1Test"/>
+            <class name="hw4.test.ex1Test"/>
         </classes>
     </test>
+
     <test name="Exercise_2">
         <classes>
-            <class name="hw4.test.java.ex2Test"/>
+            <class name="hw4.test.ex2Test"/>
+        </classes>
+    </test>
+
+    <test name="FailingTest">
+        <classes>
+            <class name="hw4.test.FailingTest"/>
         </classes>
     </test>
 </suite>
