@@ -7,3 +7,5 @@ e
 .idea
 debug.log
 *.iml
+
+**/.allure
