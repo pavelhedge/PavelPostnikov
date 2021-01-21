@@ -16,8 +16,8 @@ public abstract class AbstractPage {
     public final String url;
     WebDriver driver;
 
-    public HeaderMenu headerMenu;
-    public SideMenu sideMenu;
+    HeaderMenu headerMenu;
+    SideMenu sideMenu;
 
     @FindBy(id = "user-icon")
     WebElement showLoginForm;
@@ -34,7 +34,7 @@ public abstract class AbstractPage {
         headerMenu = new HeaderMenu();
         sideMenu = new SideMenu();
         this.driver = DriverManager.getDriver();
-        if (!driver.getTitle().equals(title)) throw new IllegalStateException("This is not the " + title + " page");
+        //if (!driver.getTitle().equals(title)) throw new IllegalStateException("This is not the " + title + " page");
         PageFactory.initElements(DriverManager.getDriver(), this);
         this.title = title;
         this.url = url;
@@ -77,8 +77,16 @@ public abstract class AbstractPage {
         showLoginForm.click();
     }
 
-    public void HeaderMenuSelect(String itemName, String subItemName){
+    public void headerMenuSelect(String itemName, String subItemName){
         headerMenu.select(itemName, subItemName);
+    }
+
+    public void headerMenuSelect(String itemName){
+        headerMenu.select(itemName);
+    }
+
+    public AbstractPage headerServiceSubmenuSelect(String subItemName){
+        return headerMenu.subSelect(subItemName);
     }
 
     public List<String> getHeaderItems(){

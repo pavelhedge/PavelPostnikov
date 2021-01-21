@@ -2,6 +2,7 @@ package hw6.main.subElements;
 
 import hw6.main.AbstractPage;
 import hw6.main.DifferentElementsPage;
+import hw6.main.UserTablePage;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -20,7 +21,8 @@ public class HeaderSubMenu extends AbstractMenu {
         select(itemName);
         if (itemName.equals("DIFFERENT ELEMENTS")) {
             return new DifferentElementsPage();
-        }
-        else return null;
+        }else if(itemName.equals("USER TABLE")){
+            return new UserTablePage();
+        }else throw new IllegalStateException(itemName + ": No such item");
     }
 }

@@ -11,7 +11,7 @@ public class HeaderMenu extends AbstractMenu {
     @FindBy(css = "ul.uui-navigation.nav>li>a")
     private List<WebElement> initItems;
 
-    HeaderSubMenu subMenu;
+    protected HeaderSubMenu subMenu;
 
     public HeaderMenu(){
         this.items = initItems;
@@ -22,4 +22,10 @@ public class HeaderMenu extends AbstractMenu {
         select(itemName);
         return subMenu.subSelect(subItemName);
     }
+
+    public AbstractPage subSelect(String subItemName){
+        return subMenu.subSelect(subItemName);
+    }
+
+
 }
