@@ -1,0 +1,8 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+<suite name="Homework_4 Tests">
+    <test name="Jdi_Exercise_1">
+        <classes>
+            <class name="JdiHomework.test.MetalsAndColorsTest"/>
+        </classes>
+    </test>
+</suite>

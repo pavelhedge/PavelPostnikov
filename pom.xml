@@ -13,6 +13,12 @@
         <aspectj.version>1.8.10</aspectj.version>
 
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
+        <jackson-databind.version>2.12.1</jackson-databind.version>
+        <jdi-light-html.version>1.3.2</jdi-light-html.version>
+        <allure-testng.version>RELEASE</allure-testng.version>
     </properties>
 
     <dependencies>
@@ -26,7 +32,7 @@
         <dependency>
             <groupId>io.qameta.allure</groupId>
             <artifactId>allure-testng</artifactId>
-            <version>RELEASE</version>
+            <version>${allure-testng.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -50,14 +56,25 @@
             <version>4.2.2</version>
             <scope>test</scope>
         </dependency>
+
+        <!--JDI-->
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>${jdi-light-html.version}</version>
+        </dependency>
+
+        <!-- Jackson JSON parser -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>
     </dependencies>
 
     <profiles>
         <profile>
             <id>AdditionAndSubtraction</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw1/AdditionAndSubtractionSuite.xml</suite.file>
             </properties>
@@ -65,9 +82,6 @@
 
         <profile>
             <id>MultiplicationAndDivision</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw1/MultiplicationAndDivisionSuite.xml</suite.file>
             </properties>
@@ -75,9 +89,6 @@
 
         <profile>
             <id>AllTests</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw1/AllTestsSuite.xml</suite.file>
             </properties>
@@ -85,9 +96,6 @@
 
         <profile>
             <id>Homework_2</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw2/hw2Suite.xml</suite.file>
             </properties>
@@ -95,9 +103,6 @@
 
         <profile>
             <id>Homework_3</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw3/hw3Suite.xml</suite.file>
             </properties>
@@ -105,11 +110,18 @@
 
         <profile>
             <id>Homework_4</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw4/hw4Suite.xml</suite.file>
+            </properties>
+        </profile>
+
+        <profile>
+            <id>JdiHomework</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <properties>
+                <suite.file>${project.basedir}/src/test/resources/JdiHomework/hwJdiSuite.xml</suite.file>
             </properties>
         </profile>
     </profiles>
@@ -119,7 +131,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -130,7 +142,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
@@ -151,9 +163,18 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.10.0</version>
+                <version>${allure-maven.version}</version>
             </plugin>
 
         </plugins>
+
+        <!-- For using properties from pom -->
+        <!--<resources>
+            <resource>
+                <directory>src/test/resources/JdiHomework</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>-->
+
     </build>
 </project>
