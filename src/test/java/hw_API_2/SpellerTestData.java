@@ -1,4 +1,4 @@
-package hw_API_2.test;
+package hw_API_2;
 
 import org.testng.annotations.DataProvider;
 

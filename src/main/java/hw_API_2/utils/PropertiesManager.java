@@ -1,4 +1,4 @@
-package hw_API_2.main;
+package hw_API_2.utils;
 
 import java.io.File;
 import java.io.FileInputStream;

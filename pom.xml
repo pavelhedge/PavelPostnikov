@@ -11,10 +11,15 @@
     <properties>
         <testng.version>7.3.0</testng.version>
         <aspectj.version>1.8.10</aspectj.version>
-        <allure.version>2.13.7</allure.version>
+
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <selenium-java.version>3.141.59</selenium-java.version>
-        <webdrivermanager.version>4.2.2</webdrivermanager.version>
+        <maven-surefire-plugin.version>3.0.0-M5</maven-surefire-plugin.version>
+        <maven-compiler-plugin.version>3.8.1</maven-compiler-plugin.version>
+        <allure-maven.version>2.10.0</allure-maven.version>
+        <jackson-databind.version>2.12.1</jackson-databind.version>
+        <jdi-light-html.version>1.3.2</jdi-light-html.version>
+        <allure-testng.version>RELEASE</allure-testng.version>
+        <rest-assured.version>4.2.0</rest-assured.version>
         <cucumber.version>6.9.1</cucumber.version>
     </properties>
 
@@ -23,6 +28,13 @@
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
             <version>${testng.version}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <dependency>
+            <groupId>io.qameta.allure</groupId>
+            <artifactId>allure-testng</artifactId>
+            <version>${allure-testng.version}</version>
             <scope>test</scope>
         </dependency>
 
@@ -49,38 +61,62 @@
 
         <dependency>
             <groupId>io.cucumber</groupId>
-            <artifactId>cucumber-java</artifactId>
-            <version>${cucumber.version}</version>
-            <scope>test</scope>
-        </dependency>
-
-        <dependency>
-            <groupId>io.cucumber</groupId>
             <artifactId>cucumber-testng</artifactId>
             <version>${cucumber.version}</version>
         </dependency>
 
         <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-cucumber6-jvm</artifactId>
-            <version>${allure.version}</version>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.epam.jdi</groupId>
+            <artifactId>jdi-light-html</artifactId>
+            <version>${jdi-light-html.version}</version>
+        </dependency>
+
+        <!--<dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>${jackson-databind.version}</version>
+        </dependency>-->
+
+        <dependency>
+            <groupId>io.rest-assured</groupId>
+            <artifactId>rest-assured</artifactId>
+            <version>${rest-assured.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>RELEASE</version>
             <scope>test</scope>
         </dependency>
 
         <dependency>
-            <groupId>io.qameta.allure</groupId>
-            <artifactId>allure-testng</artifactId>
-            <version>LATEST</version>
-            <scope>test</scope>
+            <groupId>com.google.code.gson</groupId>
+            <artifactId>gson</artifactId>
+            <version>2.8.6</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>1.18.18</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>7.3.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 
     <profiles>
         <profile>
             <id>AdditionAndSubtraction</id>
-            <activation>
-                <activeByDefault>true</activeByDefault>
-            </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw1/AdditionAndSubtractionSuite.xml</suite.file>
             </properties>
@@ -88,9 +124,6 @@
 
         <profile>
             <id>MultiplicationAndDivision</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw1/MultiplicationAndDivisionSuite.xml</suite.file>
             </properties>
@@ -98,9 +131,6 @@
 
         <profile>
             <id>AllTests</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw1/AllTestsSuite.xml</suite.file>
             </properties>
@@ -108,9 +138,6 @@
 
         <profile>
             <id>Homework_2</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw2/hw2Suite.xml</suite.file>
             </properties>
@@ -118,9 +145,6 @@
 
         <profile>
             <id>Homework_3</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw3/hw3Suite.xml</suite.file>
             </properties>
@@ -128,32 +152,28 @@
 
         <profile>
             <id>Homework_4</id>
-            <activation>
-                <activeByDefault>false</activeByDefault>
-            </activation>
             <properties>
                 <suite.file>${project.basedir}/src/test/resources/hw4/hw4Suite.xml</suite.file>
             </properties>
         </profile>
 
         <profile>
-            <id>Homework_6</id>
+            <id>JdiHomework</id>
             <activation>
-                <activeByDefault>false</activeByDefault>
+                <activeByDefault>true</activeByDefault>
             </activation>
             <properties>
-                <suite.file>${project.basedir}/src/test/resources/hw6/hw6Suite.xml</suite.file>
+                <suite.file>${project.basedir}/src/test/resources/JdiHomework/hwJdiSuite.xml</suite.file>
             </properties>
         </profile>
     </profiles>
-
 
     <build>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.1</version>
+                <version>${maven-compiler-plugin.version}</version>
                 <configuration>
                     <source>1.8</source>
                     <target>1.8</target>
@@ -164,7 +184,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M5</version>
+                <version>${maven-surefire-plugin.version}</version>
                 <configuration>
                     <argLine>
                         -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
@@ -185,9 +205,18 @@
             <plugin>
                 <groupId>io.qameta.allure</groupId>
                 <artifactId>allure-maven</artifactId>
-                <version>2.10.0</version>
+                <version>${allure-maven.version}</version>
             </plugin>
 
         </plugins>
+
+        <!-- For using properties from pom -->
+        <!--<resources>
+            <resource>
+                <directory>src/test/resources/JdiHomework</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>-->
+
     </build>
 </project>

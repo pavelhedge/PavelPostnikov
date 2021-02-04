@@ -1,10 +1,9 @@
-package hw_API_2.test;
+package hw_API_2;
 
-import hw_API_2.main.SpellerService;
 import org.testng.annotations.BeforeClass;
 
 public class BasicTest {
-    SpellerService service;
+    public SpellerService service;
 
     @BeforeClass(alwaysRun = true)
     public void beforeClass(){

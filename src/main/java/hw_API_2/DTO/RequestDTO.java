@@ -1,13 +1,12 @@
-package hw_API_2.main.DTO;
+package hw_API_2.DTO;
 
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
-import hw_API_2.main.Options;
+import hw_API_2.DTO.subentities.Options;
 import lombok.*;
 import lombok.experimental.Accessors;
 
-import java.util.HashMap;
 import java.util.Map;
 
 @Data

@@ -1,10 +1,8 @@
-package hw_API_2.main;
-
-import org.testng.annotations.Test;
+package hw_API_2.DTO.subentities;
 
 public enum Options {
-        IGNORE_DIGITS   (1),
-        IGNORE_URLS     (2),
+        IGNORE_DIGITS   (2),
+        IGNORE_URLS     (4),
         FIND_REPEAT_WORDS(8),
         IGNORE_CAPITALIZATION	(512);
 
