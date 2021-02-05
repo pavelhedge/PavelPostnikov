@@ -26,4 +26,14 @@ public class MetalsAndColorsForm extends Form<MetalsAndColorsDataset> {
     public DropList vegetables;
     @UI("#submit-button") 
     public Button submit;
+    
+    @Override
+    public void submit(MetalsAndColorsDataset dataset) {
+        metalsAndColorsPage.form.summary.select(dataset.summary);
+        metalsAndColorsPage.form.elements.select(dataset.elements);
+        metalsAndColorsPage.form.color.select(dataset.color);
+        metalsAndColorsPage.form.metals.select(dataset.metals);
+        metalsAndColorsPage.form.vegetables.select(dataset.vegetables);
+        metalsAndColorsPage.form.submit.click();
+    }
 }
