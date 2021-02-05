@@ -9,10 +9,9 @@ public class DropList extends Section {
     @UI("#salad-dropdown button") Button openBtn;
     @UI("#salad-dropdown input") Checklist options;
 
-
     public void select(String ... values){
         openBtn.click();
-        options.select("Vegetables"); // Убрать дефолтное значение
+        options.select("Vegetables"); // Unselect default value
         options.select(values);
     }
 }
