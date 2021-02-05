@@ -12,13 +12,11 @@ public class MetalsAndColorsForm extends Form<MetalsAndColorsDataset> {
 
     @UI("#summary-block") public SummaryBox summary;
     @UI("#elements-block input") public Checklist elements;
-
     @JDropdown(root = "#colors",
             value = ".filter-option",
             list = "li",
             expand = ".caret")
     public Dropdown color;
-
     @JDropdown(root = "#metals",
             value = ".filter-option",
             list = "li",
@@ -26,13 +24,6 @@ public class MetalsAndColorsForm extends Form<MetalsAndColorsDataset> {
     public Dropdown metals;
     @UI("#vegetables")
     public DropList vegetables;
-
-    @UI("#submit-button") public Button submit;
-
-    /*@Override
-    public void fillAction(Field field, Object element, Object parent, String setValue){
-        System.out.printf("############## \n\nfield: %s\nelement: %s\nparent: %s\nsetValue: %s\n\n", field.getName(),  element.getClass(),  parent.getClass(),  setValue);
-
-        super.fillAction(field, element, parent, setValue);
-    }*/
+    @UI("#submit-button") 
+    public Button submit;
 }
