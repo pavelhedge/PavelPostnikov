@@ -6,7 +6,7 @@ import java.util.Arrays;
 
 public class MetalsAndColorsDataset extends DataClass<MetalsAndColorsDataset> {
     public int[] summary;
-    public int sum;
+    public int resultSum;
     public String[] elements;
     public String color;
     public String metals;
@@ -17,8 +17,11 @@ public class MetalsAndColorsDataset extends DataClass<MetalsAndColorsDataset> {
     }
 
     public int getSum(){
-        if(this.summary != null) return this.sum = this.summary[0] + this.summary[1];
-        else return sum;
+        if(this.summary != null) {
+            this.resultSum = this.summary[0] + this.summary[1];
+            return resultSum;
+        }
+        else return resultSum;
     }
 
     public String[] getElements() {
