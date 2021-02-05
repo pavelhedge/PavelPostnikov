@@ -29,11 +29,7 @@ public class CredentialsManager {
 
             doc = dBuilder.parse(inputFile);
             doc.getDocumentElement().normalize();
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
+        } catch (ParserConfigurationException | SAXException | IOException e) {
             e.printStackTrace();
         }
     }
