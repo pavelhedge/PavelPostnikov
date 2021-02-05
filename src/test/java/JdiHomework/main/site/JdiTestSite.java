@@ -16,9 +16,14 @@ public class JdiTestSite {
     public static HomePage homePage;
     public static MetalsAndColorsPage metalsAndColorsPage;
 
-    @Css("form") public static LoginForm loginForm;
-    @Css("img#user-icon") public static Icon userIcon;
-    @UI("#user-name") public static Text userName;
-    @Css(".fa-sign-out") public static WebElement logout;
-    @UI(".nav>li") public static Menu headerMenu;
+    @Css("form") 
+    public static LoginForm loginForm;
+    @Css("img#user-icon") 
+    public static Icon userIcon;
+    @UI("#user-name") 
+    public static Text userName;
+    @Css(".fa-sign-out") 
+    public static WebElement logout;
+    @UI(".nav>li") 
+    public static Menu headerMenu;
 }
