@@ -10,8 +10,10 @@ import JdiHomework.main.entities.MetalsAndColorsDataset;
 
 public class MetalsAndColorsForm extends Form<MetalsAndColorsDataset> {
 
-    @UI("#summary-block") public SummaryBox summary;
-    @UI("#elements-block input") public Checklist elements;
+    @UI("#summary-block")
+    public SummaryBox summary;
+    @UI("#elements-block input")
+    public Checklist elements;
     @JDropdown(root = "#colors",
             value = ".filter-option",
             list = "li",
@@ -29,11 +31,11 @@ public class MetalsAndColorsForm extends Form<MetalsAndColorsDataset> {
     
     @Override
     public void submit(MetalsAndColorsDataset dataset) {
-        metalsAndColorsPage.form.summary.select(dataset.summary);
-        metalsAndColorsPage.form.elements.select(dataset.elements);
-        metalsAndColorsPage.form.color.select(dataset.color);
-        metalsAndColorsPage.form.metals.select(dataset.metals);
-        metalsAndColorsPage.form.vegetables.select(dataset.vegetables);
-        metalsAndColorsPage.form.submit.click();
+        summary.select(dataset.summary);
+        elements.select(dataset.elements);
+        color.select(dataset.color);
+        metals.select(dataset.metals);
+        vegetables.select(dataset.vegetables);
+        submit.click();
     }
 }

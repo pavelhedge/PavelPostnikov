@@ -6,11 +6,17 @@ import com.epam.jdi.light.ui.html.elements.common.Text;
 import JdiHomework.main.entities.MetalsAndColorsDataset;
 
 public class ResultsSection extends Section {
-    @UI(".summ-res") public Text summary;
-    @UI(".col-res") Text color;
-    @UI(".met-res") Text metal;
-    @UI(".sal-res") Text vegetables;
-    @UI(".elem-res") Text elements;
+
+    @UI(".summ-res")
+    Text summary;
+    @UI(".col-res")
+    Text color;
+    @UI(".met-res")
+    Text metal;
+    @UI(".sal-res")
+    Text vegetables;
+    @UI(".elem-res")
+    Text elements;
 
     @Override
     public String toString(){
@@ -29,7 +35,7 @@ public class ResultsSection extends Section {
     public MetalsAndColorsDataset getDataset(){
         return new MetalsAndColorsDataset().set(
                 d -> {
-                    d.sum = Integer.parseInt(getString(summary));
+                    d.resultSum = Integer.parseInt(getString(summary));
                     d.elements = getString(elements).split(", ");
                     d.color = getString(color);
                     d.metals = getString(metal);
