@@ -16,6 +16,7 @@
         <selenium-java.version>3.141.59</selenium-java.version>
         <webdrivermanager.version>4.2.2</webdrivermanager.version>
         <cucumber.version>6.9.1</cucumber.version>
+
     </properties>
 
     <dependencies>
